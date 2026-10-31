@@ -13,7 +13,6 @@ import LearnedRulesDrawer from './components/LearnedRulesDrawer';
 import MessyIngestionModal from './components/MessyIngestionModal';
 import MonthlyReportModal from './components/MonthlyReportModal';
 import GuardrailsModal from './components/GuardrailsModal';
-import LinkedInToolkitModal from './components/LinkedInToolkitModal';
 
 import { 
   initialProfile, 
@@ -49,7 +48,6 @@ export default function App() {
   const [isRulesDrawerOpen, setIsRulesDrawerOpen] = useState(false);
   const [isReportOpen, setIsReportOpen] = useState(false);
   const [isGuardrailsOpen, setIsGuardrailsOpen] = useState(false);
-  const [isLinkedInToolkitOpen, setIsLinkedInToolkitOpen] = useState(false);
 
   // Voice Audio Speech Synthesizer
   const speakResponse = (text) => {
@@ -212,7 +210,6 @@ export default function App() {
         onOpenRules={() => setIsRulesDrawerOpen(true)}
         onOpenReport={() => setIsReportOpen(true)}
         onOpenGuardrails={() => setIsGuardrailsOpen(true)}
-        onOpenLinkedInToolkit={() => setIsLinkedInToolkitOpen(true)}
         audioFeedback={audioFeedback}
         setAudioFeedback={setAudioFeedback}
         activeVoiceDenoisingCount={learnedRules.length}
@@ -283,10 +280,6 @@ export default function App() {
             <button onClick={() => setIsReportOpen(true)} className="hover:text-[#18191B] transition-colors">
               AUDIT_REPORT
             </button>
-            <span>•</span>
-            <button onClick={() => setIsLinkedInToolkitOpen(true)} className="text-[#B45309] hover:underline">
-              LINKEDIN_STREAK (+10 PTS)
-            </button>
           </div>
         </div>
       </footer>
@@ -324,11 +317,6 @@ export default function App() {
       <GuardrailsModal
         isOpen={isGuardrailsOpen}
         onClose={() => setIsGuardrailsOpen(false)}
-      />
-
-      <LinkedInToolkitModal
-        isOpen={isLinkedInToolkitOpen}
-        onClose={() => setIsLinkedInToolkitOpen(false)}
       />
     </div>
   );

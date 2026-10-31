@@ -1,12 +1,11 @@
 import React from 'react';
-import { Mic, ShieldCheck, FileText, Database, Volume2, VolumeX, Flame, Sparkles } from 'lucide-react';
+import { Mic, ShieldCheck, FileText, Database, Volume2, VolumeX, Sparkles } from 'lucide-react';
 
 export default function Navbar({ 
   onOpenMessyIngest, 
   onOpenRules, 
   onOpenReport, 
   onOpenGuardrails,
-  onOpenLinkedInToolkit,
   audioFeedback,
   setAudioFeedback,
   activeVoiceDenoisingCount
@@ -72,15 +71,6 @@ export default function Navbar({
             title={audioFeedback ? "Speech feedback on" : "Speech feedback off"}
           >
             {audioFeedback ? <Volume2 className="w-3.5 h-3.5 text-[#385741]" /> : <VolumeX className="w-3.5 h-3.5 text-[#88857B]" />}
-          </button>
-
-          {/* LinkedIn Hackathon Streak */}
-          <button
-            onClick={onOpenLinkedInToolkit}
-            className="flex items-center space-x-1 px-3 py-1.5 rounded-full border border-[#D97706]/40 bg-[#FFFBEB] text-[#B45309] hover:bg-[#FEF3C7] transition-all"
-          >
-            <Flame className="w-3 h-3 fill-current text-[#D97706]" />
-            <span>+10 PTS</span>
           </button>
         </div>
       </div>

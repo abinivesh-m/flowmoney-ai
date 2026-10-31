@@ -167,8 +167,20 @@ export function parseWisprVoiceInput(rawText, currentState) {
     });
   }
 
+  // E. Ethical Guardrail Check (Pillar 8: Educates and models scenarios, no individual security recommendations)
+  const isSecurityQuery = /stock|share|crypto|bitcoin|ethereum|penny stock|multibagger|options trading|buy equity/i.test(lower);
+  if (isSecurityQuery) {
+    intents.push("GUARDRAIL_COMPLIANCE");
+    actions.push({
+      action: "ENFORCE_GUARDRAILS",
+      details: "Blocked specific security recommendation under SEBI/SEC scenario guidance limits."
+    });
+  }
+
   // Generate Agent Response Text
-  if (intents.includes("WHAT_IF_SIMULATION") && intents.includes("LOG_TRANSACTION")) {
+  if (isSecurityQuery) {
+    responseSpeech = `Under strict regulatory and ethical guardrails (Pillar 8), I am your personal living money coach designed to model budgets, expenses, and cashflow runway. I do not provide individual stock, crypto, or trading recommendations.`;
+  } else if (intents.includes("WHAT_IF_SIMULATION") && intents.includes("LOG_TRANSACTION")) {
     responseSpeech = `Got it! I logged ₹${newTransaction?.amount || 300} for ${newTransaction?.description || 'Coffee'} after adjusting for reimbursement. Regarding your goal: even with a ₹4,000 rent hike, cutting dining out by 30% saves an extra ₹4,500 monthly, keeping your MacBook purchase on track for December 15th!`;
   } else if (intents.includes("LEARN_CATEGORY_RULE")) {
     responseSpeech = `Understood. I've updated my permanent memory: all future transactions for ${learnedRule.pattern} will be classified under ${learnedRule.category}, with alerts triggered if monthly spend exceeds your budget limit.`;
