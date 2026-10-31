@@ -25,6 +25,7 @@ import {
 
 import { parseWisprVoiceInput } from './services/voiceAgentEngine';
 import { soundEffects } from './utils/soundEffects';
+import { speakNaturalIndianVoice } from './utils/naturalVoice';
 
 export default function App() {
   // Living State
@@ -49,18 +50,10 @@ export default function App() {
   const [isReportOpen, setIsReportOpen] = useState(false);
   const [isGuardrailsOpen, setIsGuardrailsOpen] = useState(false);
 
-  // Voice Audio Speech Synthesizer
+  // Voice Audio Speech Synthesizer (Natural Indian Voice - 100% Free)
   const speakResponse = (text) => {
-    if (!audioFeedback || !window.speechSynthesis) return;
-    try {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1.05;
-      utterance.pitch = 1.0;
-      window.speechSynthesis.speak(utterance);
-    } catch (e) {
-      console.warn("Speech synthesis error:", e);
-    }
+    if (!audioFeedback) return;
+    speakNaturalIndianVoice(text);
   };
 
   // Process Voice Stream from Wispr Flow Pro or Mic

@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { showcaseVoicePresets } from '../data/initialFinanceData';
 import { soundEffects } from '../utils/soundEffects';
+import { speakNaturalIndianVoice } from '../utils/naturalVoice';
 
 export default function WisprVoiceBar({ onProcessVoice, lastParsedResult, onOpenInspector, isProcessing, onListeningChange }) {
   const [inputText, setInputText] = useState("");
@@ -80,11 +81,8 @@ export default function WisprVoiceBar({ onProcessVoice, lastParsedResult, onOpen
   };
 
   const handleReplayVoice = () => {
-    if (lastParsedResult && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(lastParsedResult.responseSpeech);
-      utterance.rate = 1.05;
-      window.speechSynthesis.speak(utterance);
+    if (lastParsedResult) {
+      speakNaturalIndianVoice(lastParsedResult.responseSpeech);
     }
   };
 
