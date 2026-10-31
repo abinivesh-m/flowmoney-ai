@@ -117,7 +117,7 @@ Traditional voice interfaces break down on real human speech because people spea
 ## 🎨 Design System & Spatial Environment
 
 - **Brand Aesthetic**: Built with the official **Wispr Flow quiet luxury design language** (Warm Cream `#FAF8F2` / `#FFFFEB`, Deep Charcoal `#121316`, and Forest Sage `#2B4232`).
-- **3D Spatial Canvas**: Powered by a **[yuusuke.work](https://www.yuusuke.work/)**-inspired continuous Three.js WebGL canvas spanning the entire background, featuring interactive kinetic Torus Knot glass sculptures, whispering orbital rings, 800 celestial particles, and smooth inertial camera parallax.
+- **3D Spatial Canvas**: Powered by a custom Three.js WebGL continuous spatial canvas spanning the entire background, featuring interactive kinetic Torus Knot glass sculptures, whispering orbital rings, 800 celestial particles, and smooth inertial camera parallax.
 
 ---
 
